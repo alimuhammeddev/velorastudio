@@ -1809,6 +1809,10 @@ a.image-frame:hover img,
     flex-direction: column;
   }
 
+  .desktop-br {
+    display: none;
+  }
+
   .simple-cta .hero-actions {
     align-items: center;
   }

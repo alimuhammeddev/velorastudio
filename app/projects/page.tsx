@@ -12,7 +12,7 @@ export default function ProjectsPage() {
     <main className="interior-page">
       <section className="page-intro section-pad">
         <p className="eyebrow">Our Portfolio</p>
-        <h1>Spaces with a<br /><em>story to tell.</em></h1>
+        <h1>Spaces with a<br className="desktop-br" /> <em>story to tell.</em></h1>
         <p className="page-intro-description">
           Explore a collection of architectural and interior concepts shaped by
           material, light, context, and the people who inhabit them.
