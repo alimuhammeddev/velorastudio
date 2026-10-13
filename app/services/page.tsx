@@ -13,7 +13,7 @@ export default function ServicesPage() {
     <main className="interior-page">
       <section className="page-intro section-pad">
         <p className="eyebrow">What we do</p>
-        <h1>Considered at<br /><em>every scale.</em></h1>
+        <h1>Considered at<br className="desktop-br" /> <em>every scale.</em></h1>
         <p className="page-intro-description">
           From the first lines of a plan to the final layers of an interior, we
           bring clarity and intention to each part of the design process.
