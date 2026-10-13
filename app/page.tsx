@@ -1,69 +1,162 @@
 import Image from "next/image";
+import Link from "next/link";
+import ProjectCard from "@/components/project-card";
+import { projects, services } from "@/lib/site-data";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+    <>
+      <main>
+        <section className="home-hero">
+          <div className="hero-copy">
+            <p className="eyebrow">Architecture &amp; Interiors</p>
+            <h1>Spaces Designed to Inspire.</h1>
+            <p className="hero-description">
+              We create thoughtful architecture and refined interiors that bring
+              beauty, function, and lasting character to everyday living.
+            </p>
+            <div className="hero-actions">
+              <Link className="button button-dark" href="/projects">
+                Explore Our Projects <span aria-hidden="true">↗</span>
+              </Link>
+              <Link className="text-link" href="/contact">
+                Start a Project <span aria-hidden="true">↗</span>
+              </Link>
+            </div>
+          </div>
+          <div className="hero-image image-frame">
             <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
+              src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2200&q=85"
+              alt="Sunlit contemporary residence with a natural stone terrace and garden"
+              fill
+              priority
+              sizes="(max-width: 760px) 100vw, 76vw"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+            <span className="image-caption">A quieter kind of statement</span>
+          </div>
+        </section>
+
+        <section className="intro-section section-pad">
+          <div className="intro-image image-frame">
+            <Image
+              src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=85"
+              alt="Calm living room layered with warm timber, linen and natural light"
+              fill
+              sizes="(max-width: 760px) 100vw, 43vw"
+            />
+          </div>
+          <div className="intro-copy">
+            <p className="eyebrow">Our Approach</p>
+            <h2>Thoughtful design. Lasting impressions.</h2>
+            <p>
+              At Velora Studio, we believe exceptional spaces begin with a clear
+              understanding of the people who inhabit them. Our approach combines
+              thoughtful planning, refined materials, and architectural clarity
+              to create environments that feel considered, functional, and
+              enduring.
+            </p>
+            <Link className="text-link" href="/studio">
+              Get to know the studio <span aria-hidden="true">↗</span>
+            </Link>
+          </div>
+        </section>
+
+        <section className="projects-section section-pad">
+          <div className="section-heading">
+            <div>
+              <p className="eyebrow">A considered collection</p>
+              <h2>Selected Projects</h2>
+            </div>
+            <p>
+              A collection of spaces shaped by context, material, light, and
+              purpose.
+            </p>
+          </div>
+          <div className="project-grid home-project-grid">
+            {projects.map((project, index) => (
+              <ProjectCard key={project.slug} project={project} index={index} />
+            ))}
+          </div>
+          <div className="section-link-row">
+            <Link className="text-link" href="/projects">
+              View All Projects <span aria-hidden="true">↗</span>
+            </Link>
+          </div>
+        </section>
+
+        <section className="services-overview section-pad">
+          <div className="section-heading">
+            <div>
+              <p className="eyebrow">What we do</p>
+              <h2>Our Expertise</h2>
+            </div>
+            <p>Considered design solutions for spaces that serve, inspire, and endure.</p>
+          </div>
+          <div className="service-list">
+            {services.map((service, index) => (
+              <Link className="service-row" href="/services" key={service.title}>
+                <span className="service-number">0{index + 1}</span>
+                <span className="service-name">{service.title}</span>
+                <span className="service-summary">{service.summary}</span>
+                <span className="service-arrow" aria-hidden="true">↗</span>
+              </Link>
+            ))}
+          </div>
+          <div className="section-link-row">
+            <Link className="text-link" href="/services">
+              Discover Our Services <span aria-hidden="true">↗</span>
+            </Link>
+          </div>
+        </section>
+
+        <section className="philosophy-section">
+          <div className="philosophy-image image-frame">
+            <Image
+              src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1800&q=85"
+              alt="Minimalist interior with sculptural furniture and softly textured walls"
+              fill
+              sizes="100vw"
+            />
+          </div>
+          <div className="philosophy-copy">
+            <p className="eyebrow">Our Philosophy</p>
+            <h2>Less, but<br />considered.</h2>
+            <p>
+              We believe meaningful architecture is found in the relationship
+              between light, proportion, material, and human experience. Every
+              detail has a purpose, and every space should feel as natural as it
+              is intentional.
+            </p>
+          </div>
+        </section>
+
+        <section className="statement-section section-pad">
+          <p className="eyebrow">A way of seeing</p>
+          <p className="statement">
+            We design for the moments that make a place feel like <em>yours.</em>
+          </p>
+          <Link className="text-link" href="/studio">
+            Our design values <span aria-hidden="true">↗</span>
+          </Link>
+        </section>
+
+        <section className="enquiry-banner">
+          <div>
+            <p className="eyebrow">The beginning of something</p>
+            <h2>Have a space<br />in mind?</h2>
+          </div>
+          <div className="enquiry-copy">
+            <p>
+              Whether you&apos;re planning a new residence, reimagining an
+              existing interior, or exploring a new architectural project,
+              we&apos;d love to hear about your vision.
+            </p>
+            <Link className="button button-dark" href="/contact">
+              Start a Project <span aria-hidden="true">↗</span>
+            </Link>
+          </div>
+        </section>
       </main>
-    </div>
+    </>
   );
 }
